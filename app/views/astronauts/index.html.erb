@@ -2,4 +2,8 @@
 <%= a.name %>
 <%= a.age %>
 <%= a.job %>
+<h5 class="astronaut"><% a.alphabetical_missions.each do |m| %></h5>
+<%= m.title %>
 <% end %>
+<% end %>
+<h3>Average Age <%= @avg_age %> </h3>
