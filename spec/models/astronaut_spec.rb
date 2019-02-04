@@ -13,18 +13,17 @@ describe Astronaut, type: :model do
   end
 
   describe 'class methods' do
+    it 'should return correct avg age' do
+      @astronaut_1 = Astronaut.create(name: "Neil", age: 30, job: "Engineer")
+      @astronaut_2 = Astronaut.create(name: "John", age: 50, job: "Engineer")
 
+      avg_age = (@astronaut_1.age + @astronaut_2.age) / 2
+
+      expect(Astronaut.avg_age).to eq(avg_age.to_f)
+    end
   end
 
   describe 'instance methods' do
-    it 'can list missions alphabetically' do
-      astronaut_1 = Astronaut.create(name: "Neil", age: 30, job: "Engineer")
-      astronaut_2 = Astronaut.create(name: "John", age: 50, job: "Engineer")
-      mission_1 = astronaut_1.missions.create(title: "Mars", time_in_space: 400)
-      mission_2 = astronaut_1.missions.create(title: "Jupiter", time_in_space: 4000)
-      mission_3 = astronaut_2.missions.create(title: "Moon", time_in_space: 40)
 
-      expect(astronaut_1.alphabetical_missions).to eq('mission_2.title, mission_1.title')
-    end
   end
 end
